@@ -1,7 +1,6 @@
 /* implementation of Sieve of Eratosthenes algorithm.
 Writer: Abdüsselam YÜCEER
 Date: 10.10.2019
-
 */
 package geekforgeekproblem;
 
@@ -24,24 +23,17 @@ public class SieveofEratosthenes {
         int arr[] = new int[arraylength];
         int i, j;
         //fill the array
-        for ( i = 1; i < arraylength; i++)
+        for ( i = 0; i < arraylength; i++)
         {
-            arr[i] = i + 1;
+            arr[i] = i;
         }
         int temp = arr[0];
         // implement the algorithm
-        for(i = 1; i < arraylength; i++)
-        {
-            temp = arr[i];
-            if (temp == 0)
-                continue;
-                   
-            for(j = i + 1; j < arraylength; j++)
+        for(i = 2; i * i < arraylength; i++)
+        {                       
+            for(j = i * i; j < arraylength; j+=i)
             {
-                if (arr[j] == 0)
-                    continue;
-                if (arr[j] % temp == 0) 
-                    arr[j] = 0;
+                arr[j] = 0;
             }
         }
         //write the array
